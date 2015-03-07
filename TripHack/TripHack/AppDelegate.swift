@@ -78,9 +78,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             defaults.setObject(newLong, forKey: "longitude")
             PFCloud.callFunctionInBackground("getTripData", withParameters:["locationData": ["oldCoord": [sysLat, sysLong], "newCoord": [newLat,newLong]]], block: { (results:AnyObject!, error:NSError!) -> Void in
             if error != nil {
-
+                
             } else {
-                //println(results)
+               println("CLOUD COUDE \(results) \n") 
             }
         })
         }
