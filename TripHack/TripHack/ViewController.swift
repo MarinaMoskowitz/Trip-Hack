@@ -13,11 +13,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var coverPhoto: UIImageView!
     @IBOutlet weak var profileBackground: UIView!
     @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var card1: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         darkenCoverPhoto()
         applyPlainShadow(profileBackground)
+        makeCard(card1)
         scrollView.contentSize = self.view.frame.size
         // Do any additional setup after loading the view.
     }
@@ -31,6 +33,11 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func makeCard(view: UIView) {
+        applyPlainShadow(view)
+        view.layer.cornerRadius = 2
     }
     
     func applyPlainShadow(view: UIView) {

@@ -12,14 +12,14 @@ class NavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBarSetup()
 
         // Do any additional setup after loading the view.
     }
 
     func navigationBarSetup() {
-        self.navigationBar.backgroundColor = UIColor.blackColor()
-        self.navigationBar.alpha = 0.29
+        self.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationBar.translucent = true
 
     }
     override func didReceiveMemoryWarning() {
