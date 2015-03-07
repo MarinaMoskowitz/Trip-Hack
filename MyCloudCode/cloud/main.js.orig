@@ -2,33 +2,75 @@
 //For Parse hosting
 //require('cloud/app.js');
 
-tripApiKey = "?=HackTripAdvisor-ade29ff43aed"
+tripApiKey = "HackTripAdvisor-ade29ff43aed"
 tripBaseUrl = "http://api.tripadvisor.com/api/partner/2.0/"
 
+<<<<<<< HEAD
+function getLocationID(lat, longitude) {
+	// this returns location ID from trip api call
+	// TODO: this is hardcoded test data
+	// 	 that returns Boston locID
+	tripUrl = "map/" + lat + "," + longitude;
+	url = tripBaseUrl + tripUrl;
+	return Parse.Cloud.httpRequest({
+		url: url,
+		params: {
+			key: tripApiKey
+		}
+	});
+};
+
+function getAttraction(city_id) {
+	// this returns location ID from trip api call
+	// TODO: this is hardcoded test data
+	// 	 that returns Boston locID
+	tripUrl = "location/" + city_id + "/attractions";
+	url = tripBaseUrl + tripUrl;
+	return Parse.Cloud.httpRequest({
+		url: url,
+		params: {
+			key: tripApiKey
+		}
+	});
+};
+=======
 // Use Parse.Cloud.define to define as many cloud functions as you want.
 // For example:
 Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!");
 });
 
-function getLocationID(lat, long) {
-	// this returns location ID from trip api call
-	// TODO: this is hardcoded test data
-	// 	 that returns Boston locID
-    var req = new XMLHttpRequest();
-    req.open("GET" tripApiKey + lat + "," + long + tripBaseUrl, false);
-    req.send();
-    var tripData = JSON.parse(req.responseText);
-    return tripData["data"][0]["location_id"];
+function getLocationID(lat, longitude) {
+    tripUrl =  "map/" + lat + "," + longitude;
+    url = tripBaseUrl + tripUrl;
+    return Parse.Cloud.httpRequest({
+    	url: url,
+    	params: {
+    			key: tripApiKey
+    	}
+    });
 };
 
+function getPhotos(attraction_id) {
+    tripUrl =  "location/" + attaction_id + "/photos";
+    url = tripBaseUrl + tripUrl;
+    return Parse.Cloud.httpRequest({
+    	url: url,
+    	params: {
+    			key: tripApiKey
+    	}
+    });
+};
+/*
 function getPageInfo(locationID) {
+	console.log("In page info:");
+	
 	// this returns a dictionary with photos, 
 	// location, description, rating, num ratings,
 	// title, country photo. etc. for app to
 	// display.
 
-	// TODO: hardcoded. Returns test dictionary
+	/*
 	info = {
 		'location': 'Boston, Massachusetts',
 		'description': 'walk here for a while, you know, do stuff',
@@ -40,12 +82,16 @@ function getPageInfo(locationID) {
 		}
 	
 	return info;
-};
+	/
+*/
+>>>>>>> a25aae57168591f435b7ad78cd0579abf591e0e2
+
+
+
 
 // request.params.locationData -> {oldData: {lat, long}}
 Parse.Cloud.define("getTripData", function(request, response) {
 	console.log("this is a test:", request.params.locationData);
-<<<<<<< HEAD
 	oldCoord = request.params.locationData['newCoord']
 	getLocationID(42.33141, -71.099396).then( function(results) {
 		tripData = JSON.parse(results.text);
@@ -54,21 +100,21 @@ Parse.Cloud.define("getTripData", function(request, response) {
 		//response.success(tripData["data"]);
 		return getAttraction(city_id);
 	}).then(function(city_results) {
-                //console.log("Got attraction: ");
+                console.log("Got attraction: ");
                 tripData = JSON.parse(city_results.text);
                 //console.log("city results \n");
                 //console.log(city_results.text)
                 attraction = tripData["data"][0]; 
                 console.log("attraction \n");
-                console.log(attraction);
-                console.log(attraction.review_string);
+                //console.log(attraction);
+                //console.log(attraction.review_string);
                 info = {};
-                //info ["location"] = attraction["location_string"];
+                info ["location"] = attraction["location_string"];
                 console.log(info);
-                //info ["description"] = attraction["description_string"];
-                //info ["rating"] = attraction["rating_string"];
-                info ["num_reviews"] = attraction["review_string"];
-                info ["title"] = attraction["name_string"];
+                info ["description"] = attraction["description"];
+                info ["rating"] = attraction["rating"];
+                info ["num_reviews"] = attraction["num_reviews"];
+                info ["title"] = attraction["name"];
                 console.log("info 2 \n");
                 console.log(info);
                 return info;
@@ -77,12 +123,16 @@ Parse.Cloud.define("getTripData", function(request, response) {
         });
     //console.log(locID)
 	//info = getPageInfo(locID)
-=======
-	newCoord = request.params.locationData['newCoord']
-	locID = getLocationID(newCoord['lat'], newCoord['long'])
-    console.log(locID)
-	info = getPageInfo(locID)
-	response.success(info)
->>>>>>> origin/master
 });
+
+function getAttraction(location_id) {
+    tripUrl =  "location/" + location_id + "/attractions";
+    url = tripBaseUrl + tripUrl;
+    return Parse.Cloud.httpRequest({
+    	url: url,
+    	params: {
+    			key: tripApiKey
+    	}
+    });
+};
 
