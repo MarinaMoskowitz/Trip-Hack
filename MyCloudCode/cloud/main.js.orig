@@ -41,9 +41,12 @@ function getPageInfo(locationID) {
 // request.params.locationData -> {oldData: {lat, long}}
 Parse.Cloud.define("getTripData", function(request, response) {
 	console.log("this is a test:", request.params.locationData);
+<<<<<<< HEAD
+=======
 	newCoord = request.params.locationData['newCoord']
 	locID = getLocationID(newCoord['lat'], newCoord['long'])
 	info = getPageInfo(locID)
 	response.success(info)
+>>>>>>> origin/master
 });
 
