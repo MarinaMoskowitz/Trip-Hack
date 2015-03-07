@@ -31,7 +31,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var flightButton : UIButton = UIButton()
     var wrongButton : UIButton = UIButton()
     var detailsLabel : UILabel = UILabel()
-    var imageArray : Array<UIImage>
+    var imageArray : Array<UIImage> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,12 +95,12 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         makeCard(card2)
         contentView.addSubview(card2)
         
-        detailsLabel: UILabel = UILabel(frame: CGRectMake(15, 10, card2.frame.size.width - (2 * 15), 170))
+        detailsLabel = UILabel(frame: CGRectMake(15, 10, card2.frame.size.width - (2 * 15), 170))
         detailsLabel.text = location + "\n\n" + description
         detailsLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
         detailsLabel.numberOfLines = 8;
         
-        card2.addSubview(label)
+        card2.addSubview(detailsLabel)
         updateContentViewWith(card2)
     }
     
