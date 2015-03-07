@@ -30,24 +30,24 @@ class TableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return 3
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
+        var cell : TableViewCell = tableView.dequeueReusableCellWithIdentifier("tableViewCell", forIndexPath: indexPath) as TableViewCell
+        
+        let image = UIImage(named: "tripButton") as UIImage!
+        cell.tripButton.setImage(image, forState: .Normal)
+        cell.tripButton.setTitle("", forState: .Normal)
+        
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

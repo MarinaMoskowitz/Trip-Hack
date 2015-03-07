@@ -13,37 +13,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dhR-G4-ahB" customClass="TableViewCell" customModule="TripHack" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" id="dhR-G4-ahB" customClass="TableViewCell" customModule="TripHack" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dhR-G4-ahB" id="HUc-bO-6P4">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dt5-dk-apZ">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dt5-dk-apZ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHm-Dv-lG6">
-                                            <rect key="frame" x="554" y="169" width="46" height="30"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnK-ma-uoL">
+                                            <rect key="frame" x="23" y="162" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRl-mF-aaQ">
+                                            <rect key="frame" x="23" y="131" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHm-Dv-lG6">
+                                            <rect key="frame" x="543" y="142" width="57" height="57"/>
                                             <state key="normal" title="Button">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnK-ma-uoL">
-                                            <rect key="frame" x="52" y="160" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRl-mF-aaQ">
-                                            <rect key="frame" x="279" y="89" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="HnK-ma-uoL" firstAttribute="top" secondItem="LRl-mF-aaQ" secondAttribute="bottom" constant="10" id="FHs-F0-XIO"/>
+                                        <constraint firstAttribute="bottom" secondItem="SHm-Dv-lG6" secondAttribute="bottom" id="IoJ-dz-eiB"/>
+                                        <constraint firstAttribute="trailing" secondItem="SHm-Dv-lG6" secondAttribute="trailing" id="WDx-XV-aTE"/>
+                                        <constraint firstAttribute="bottom" secondItem="dt5-dk-apZ" secondAttribute="bottom" id="tWv-pv-8VG"/>
+                                        <constraint firstAttribute="bottom" secondItem="HnK-ma-uoL" secondAttribute="bottom" constant="16" id="wpJ-dr-Rih"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="authorLabel" destination="HnK-ma-uoL" id="v9y-tX-cUl"/>
                                     <outlet property="pictureView" destination="dt5-dk-apZ" id="G2W-1E-nhA"/>
-                                    <outlet property="tripButton" destination="SHm-Dv-lG6" id="tnT-Kv-adc"/>
+                                    <outlet property="storyLabel" destination="LRl-mF-aaQ" id="rdP-dx-xMW"/>
+                                    <outlet property="tripButton" destination="SHm-Dv-lG6" id="aQC-4C-iSl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
