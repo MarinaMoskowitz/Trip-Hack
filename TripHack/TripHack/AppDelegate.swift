@@ -14,10 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Parse.setApplicationId("Mcwsrg095L8JYxQLaKXni8kANhStVh7sYrx79wBW", clientKey:"4bVcnNEP2QNZRaVzXSmMVQ8in76vdjvCPUtKw3j2")
+        
+        PFCloud.callFunctionInBackground("getTripData", withParameters:["locationData":[39.7305177,-104.9743303]]);
         
         //var object = PFObject(className: "TestClass")
         //object.addObject("Banana", forKey: "favoriteFood")

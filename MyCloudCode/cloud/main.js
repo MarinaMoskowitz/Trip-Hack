@@ -20,7 +20,8 @@ function getPageInfo(locationID) {
 	// display.
 }
 
-Parse.Cloud.define("getLocationID", function(request, response) {
-
+// request.params.locationData -> {oldData: {lat, long}}
+Parse.Cloud.define("getTripData", function(request, response) {
+	console.log("this is a test:", request.params.locationData);
 }
 
