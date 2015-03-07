@@ -40,36 +40,34 @@ function getPhotos(attraction_id, info) {
     	}
     });
 
-    tripData = JSON.parse(tripData.text);
-
-    //info['photos'] = parseForPhotos(tripData);
+    info['photos'] = parseForPhotos(tripData);
     console.log('photos \n');
     console.log(info['photos']);
     return info;
 };
-/* TODO: Grab photos array
+
 function parseForPhotos(tripData) {
 	photos = [];
 	//for (var i in tripData['data']) {
-		photo_url = tripData['data'][0]['large']['url'];
-		console.log("tripData['data']\n")
-		console.log(tripData);
-		console.log(photo_url);
+		//photo_url = tripData['data'][0]['large']['url'];
+		console.log(tripData['data']);
+		//console.log(photo_url);
 	//	photos.push(photo_url);
 	//}
 	return photos;
 };
-*/
+
 // request.params.locationData -> {oldData: {lat, long}}
 Parse.Cloud.define("getTripData", function(request, response) {
 	console.log("this is a test:", request.params.locationData);
-	oldCoord = request.params.locationData.oldCoord;
-	getLocationID(oldCoord.lat, oldCoord.long).then( function(results) {
+	oldCoord = request.params.locationData['newCoord']
+	getLocationID(42.33141, -71.099396).then( function(results) {
 		tripData = JSON.parse(results.text);
 		city_id = tripData["data"][0]["ancestors"][0]["location_id"];
 		//console.log("city_id: " + city_id);
 		return getAttraction(city_id);
 	}).then(function(city_results) {
+                console.log("Got attraction: ");
                 tripData = JSON.parse(city_results.text);
                 //console.log("city results \n");
                 //console.log(city_results.text)
@@ -84,10 +82,8 @@ Parse.Cloud.define("getTripData", function(request, response) {
                 info ["rating"] = attraction["rating"];
                 info ["num_reviews"] = attraction["num_reviews"];
                 info ["title"] = attraction["name"];
-                console.log("attraction:");
-                attraction_id = attraction['location_id'];
                 //console.log("info 2 \n");
-                return info;//getPhotos(attraction_id,info);
+                return getPhotos(attraction["location_id"],info);
         }).then(function(info) {
         		console.log(info);
                 response.success(info);
