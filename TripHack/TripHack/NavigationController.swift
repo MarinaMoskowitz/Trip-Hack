@@ -12,10 +12,14 @@ class NavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationBarSetup()
 
         // Do any additional setup after loading the view.
     }
 
+    func navigationBarSetup() {
+        self.navigationBar.translucent = true
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
