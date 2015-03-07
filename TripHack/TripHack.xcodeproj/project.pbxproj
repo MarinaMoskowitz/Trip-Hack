@@ -15,6 +15,7 @@
 		99F5300E1AAAA0B8003FF448 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F5300D1AAAA0B8003FF448 /* WebViewController.swift */; };
 		99F530111AAAA127003FF448 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F530101AAAA127003FF448 /* NavigationController.swift */; };
 		99F530131AAAA17E003FF448 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F530121AAAA17E003FF448 /* TableViewController.swift */; };
+		99F530171AAAA4C8003FF448 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F530161AAAA4C8003FF448 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		99F5300D1AAAA0B8003FF448 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = ../WebViewController.swift; sourceTree = "<group>"; };
 		99F530101AAAA127003FF448 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		99F530121AAAA17E003FF448 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		99F530161AAAA4C8003FF448 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = ../TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				99F52FEB1AAA9FA2003FF448 /* AppDelegate.swift */,
 				99F530101AAAA127003FF448 /* NavigationController.swift */,
 				99F530121AAAA17E003FF448 /* TableViewController.swift */,
+				99F530161AAAA4C8003FF448 /* TableViewCell.swift */,
 				99F52FEF1AAA9FA2003FF448 /* Main.storyboard */,
 				99F52FF21AAA9FA2003FF448 /* Images.xcassets */,
 				99F52FF41AAA9FA2003FF448 /* LaunchScreen.xib */,
@@ -226,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99F530171AAAA4C8003FF448 /* TableViewCell.swift in Sources */,
 				99F52FEC1AAA9FA2003FF448 /* AppDelegate.swift in Sources */,
 				99F530111AAAA127003FF448 /* NavigationController.swift in Sources */,
 				99F5300E1AAAA0B8003FF448 /* WebViewController.swift in Sources */,
