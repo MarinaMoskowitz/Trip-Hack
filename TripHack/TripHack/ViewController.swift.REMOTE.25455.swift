@@ -35,8 +35,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var imageArray : Array<UIImage> = []
     var flightLabel : UILabel = UILabel()
     
-    var flightURL : String = "http://www.google.com"
-    var activityURL : String = "http://www.tripadvisor.com"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +42,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         applyPlainShadow(profileBackground)
         setupPlacement()
         scrollView.contentSize = self.view.frame.size
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -76,14 +76,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     func setFlightDate(dateString: NSString) {
         flightLabel.text = "Salvage your dignity and fly back on\n" + dateString
-    }
-    
-    func setFlightURL(link: NSString) {
-        flightURL = link
-    }
-    
-    func setActivityURL(link: NSString) {
-        activityURL = link
     }
     
     
@@ -253,17 +245,10 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   
     }
     func flyMeBackTouchUpInside() {
-        self.performSegueWithIdentifier("toWebView", sender: flightURL)
+        
     }
     func youreWrongTouchUpInside() {
-        self.performSegueWithIdentifier("toWebView", sender: activityURL)
-    }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "toWebView") {
-            var dvc = segue.destinationViewController as WebViewController
-            dvc.linkURL = sender as String
-        }
     }
 
 }

@@ -139,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="461.33333333333331" y="389.07999999999998"/>
         </scene>
-        <!--View Controller-->
+        <!--Web View Controller-->
         <scene sceneID="REM-aN-b7K">
             <objects>
-                <viewController id="N5Y-uH-SE3" sceneMemberID="viewController">
+                <viewController id="N5Y-uH-SE3" customClass="WebViewController" customModule="TripHack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K27-xw-Dxx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -152,10 +152,23 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RzD-ae-70I">
+                                <rect key="frame" x="21" y="25" width="44" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="backButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTouchUpInside:" destination="N5Y-uH-SE3" eventType="touchUpInside" id="Fjd-cZ-TfE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="r2z-Qu-EJC"/>
+                    <connections>
+                        <outlet property="webView" destination="Qf6-gQ-Dlx" id="JjY-qg-n3i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uEj-Iq-UJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -163,6 +176,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backButton" width="38" height="38"/>
         <image name="bucketList" width="103" height="147"/>
         <image name="defaultBackground" width="1024" height="408"/>
         <image name="defaultProfile" width="145" height="145"/>

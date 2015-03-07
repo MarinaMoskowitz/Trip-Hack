@@ -35,8 +35,11 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var imageArray : Array<UIImage> = []
     var flightLabel : UILabel = UILabel()
     
+<<<<<<< HEAD
     var flightURL : String = "http://www.google.com"
     var activityURL : String = "http://www.tripadvisor.com"
+=======
+>>>>>>> origin/master
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +47,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         applyPlainShadow(profileBackground)
         setupPlacement()
         scrollView.contentSize = self.view.frame.size
+        
+        
         // Do any additional setup after loading the view.
     }
     

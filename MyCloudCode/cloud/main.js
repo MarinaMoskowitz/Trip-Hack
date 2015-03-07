@@ -2,7 +2,7 @@
 //For Parse hosting
 //require('cloud/app.js');
 
-tripApiKey = "HackTripAdvisor-ade29ff43aed"
+tripApiKey = "?=HackTripAdvisor-ade29ff43aed"
 tripBaseUrl = "http://api.tripadvisor.com/api/partner/2.0/"
 
 // Use Parse.Cloud.define to define as many cloud functions as you want.
@@ -11,37 +11,24 @@ Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!");
 });
 
-function getLocationID(lat, longitude) {
-    tripUrl =  "map/" + lat + "," + longitude;
-    url = tripBaseUrl + tripUrl;
-    return Parse.Cloud.httpRequest({
-    	url: url,
-    	params: {
-    			key: tripApiKey
-    	}
-    });
+function getLocationID(lat, long) {
+	// this returns location ID from trip api call
+	// TODO: this is hardcoded test data
+	// 	 that returns Boston locID
+    var req = new XMLHttpRequest();
+    req.open("GET" tripApiKey + lat + "," + long + tripBaseUrl, false);
+    req.send();
+    var tripData = JSON.parse(req.responseText);
+    return tripData["data"][0]["location_id"];
 };
 
-function getPhotos(attraction_id) {
-    tripUrl =  "location/" + attaction_id + "/photos";
-    url = tripBaseUrl + tripUrl;
-    return Parse.Cloud.httpRequest({
-    	url: url,
-    	params: {
-    			key: tripApiKey
-    	}
-    });
-};
-/*
 function getPageInfo(locationID) {
-	console.log("In page info:");
-	
 	// this returns a dictionary with photos, 
 	// location, description, rating, num ratings,
 	// title, country photo. etc. for app to
 	// display.
 
-	/*
+	// TODO: hardcoded. Returns test dictionary
 	info = {
 		'location': 'Boston, Massachusetts',
 		'description': 'walk here for a while, you know, do stuff',
@@ -53,8 +40,7 @@ function getPageInfo(locationID) {
 		}
 	
 	return info;
-	/
-*/
+};
 
 // request.params.locationData -> {oldData: {lat, long}}
 Parse.Cloud.define("getTripData", function(request, response) {
@@ -91,15 +77,4 @@ Parse.Cloud.define("getTripData", function(request, response) {
     //console.log(locID)
 	//info = getPageInfo(locID)
 });
-
-function getAttraction(location_id) {
-    tripUrl =  "location/" + location_id + "/attractions";
-    url = tripBaseUrl + tripUrl;
-    return Parse.Cloud.httpRequest({
-    	url: url,
-    	params: {
-    			key: tripApiKey
-    	}
-    });
-};
 
