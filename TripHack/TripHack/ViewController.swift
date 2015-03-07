@@ -36,15 +36,14 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var flightLabel : UILabel = UILabel()
     var extraPicture : UIImageView = UIImageView()
     
-    var flightURL : String = "http://www.google.com"
-    var activityURL : String = "http://www.tripadvisor.com"
+    var flightURL : String = "http://www.tripadvisor.com/CheapFlights?geo=255122&pax0=a&travelers=1&cos=0&nonstop=no&airport0=BOS&nearby0=no&airport1=ZQN&nearby1=no&date0=20150321&time0=0024&date1=20150328&time1=0024&provider0=Expedia&provider1=Travelocity&cr=0"
+    var activityURL : String = "http://www.tripadvisor.com/Attractions-g255122-Activities-Queenstown_Otago_Region_South_Island.html"
 
     var picturePVC : UIPageViewController = UIPageViewController()
     var height : CGFloat = 0.00
     var coverPhotoCenterY : CGFloat = 0.00
 
     var darkImage : UIImageView = UIImageView()
-    var blurView : UIVisualEffectView = UIVisualEffectView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +53,21 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentSize = self.view.frame.size
         
         // Do any additional setup after loading the view.
+        showIntroAlert()
+    }
+    
+    func showIntroAlert() {
+        let alertController = UIAlertController(title: "Oh Hey, you're back from New Zealand!", message: "Here's something you totally forgot to do in New Zealand", preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "continue", style: .Cancel) { (action) in
+        println(action)
+        }
+        
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true) {
+        
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -241,14 +255,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     func darkenCoverPhoto() {
         darkImage = UIImageView(image: UIImage(named:"fadeView"))
         darkImage.frame = coverPhoto.frame
-        darkImage.contentMode = UIViewContentMode.ScaleAspectFill
         coverPhoto.addSubview(darkImage)
-
-        var darkBlur = UIBlurEffect(style: UIBlurEffectStyle.Light)
-        var blurView = UIVisualEffectView(effect: darkBlur)
-        blurView.frame = coverPhoto.bounds
-        coverPhoto.addSubview(blurView)
-        blurView.alpha = 0
     }
     
     override func didReceiveMemoryWarning() {
