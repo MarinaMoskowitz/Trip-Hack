@@ -17,8 +17,6 @@ class NavigationController: UINavigationController {
     }
 
     func navigationBarSetup() {
-        self.navigationBar.barStyle = UIBarStyle.Black
-        self.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationBar.translucent = true
 
     }

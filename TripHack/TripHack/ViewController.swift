@@ -8,20 +8,147 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+var X_BUFFER: CGFloat { return 10.0 }
+var Y_BUFFER: CGFloat { return 10.0 }
+var TRIP_COLOR: UIColor {
+    return UIColor(red: 0.48, green: 0.75, blue: 0.42, alpha: 1) }
+var WRONG_COLOR: UIColor {
+    return UIColor(red: 0.99, green: 0.46, blue: 0.51, alpha: 1) }
+
+class ViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var coverPhoto: UIImageView!
     @IBOutlet weak var profileBackground: UIView!
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var card1: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var friendsLabel: UILabel!
+    @IBOutlet weak var contentView: UIView!
+    var card2 : UIView = UIView()
+    var card3 : UIView = UIView()
+    var card4 : UIView = UIView()
+    var card5 : UIView = UIView()
+    var flightButton : UIButton = UIButton()
+    var wrongButton : UIButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         darkenCoverPhoto()
         applyPlainShadow(profileBackground)
-        makeCard(card1)
+        setupPlacement()
         scrollView.contentSize = self.view.frame.size
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+        scrollView.contentSize = contentView.frame.size
+    }
+    
+    func setupPlacement() {
+        makeCard(card1)
+        
+        coverPhoto.frame = CGRectMake(0, 0, self.view.frame.size.width, 200)
+        profileBackground.frame = CGRectMake(X_BUFFER, coverPhoto.frame.size.height - 70, 100, 100)
+        titleLabel.frame = CGRectMake(profileBackground.frame.size.width + profileBackground.frame.origin.x + 10, coverPhoto.frame.size.height - 30, self.view.frame.size.width - profileBackground.frame.size.width - profileBackground.frame.origin.x - 20, 24)
+        friendsLabel.frame = CGRectMake(profileBackground.frame.size.width + profileBackground.frame.origin.x + 10, coverPhoto.frame.size.height, self.view.frame.size.width - profileBackground.frame.size.width - profileBackground.frame.origin.x - 20, 24)
+        
+        card1.frame = CGRectMake(X_BUFFER, profileBackground.frame.size.height + profileBackground.frame.origin.y + 10, self.view.frame.size.width - 20, 110);
+        
+        makeReviewCard("Queenstown, New Zealand", description: "Shotover Canyon Swing is an intense, undie staining, adrenalin stimulating activity achieved by launching yourself from a 109m high cliff-mounted platform. You’ll reach speeds of 150kph as you freefall for 60m. The ropes then smoothly pendulum you into a 200m swing.", rating: 5, numRatings: 184)
+        
+        var demo1 = UIImage(named: "demo1")
+        var array = [demo1!]
+        makePhotoCard(array)
+        makeLamenessCard()
+        makeFlightCards()
+        
+        scrollView.contentSize = contentView.frame.size
+    }
+    
+    func makeReviewCard(location: String, description: String, rating: CGFloat, numRatings: Int) {
+        card2 = UIView(frame: CGRectMake(X_BUFFER, card1.frame.size.height + card1.frame.origin.y + Y_BUFFER, self.view.frame.size.width - (2 * X_BUFFER), 150));
+        card2.backgroundColor = UIColor.whiteColor()
+        makeCard(card2)
+        contentView.addSubview(card2)
+        
+        var label: UILabel = UILabel(frame: CGRectMake(15, 10, card2.frame.size.width - (2 * 15), 100))
+        label.text = location + description
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.numberOfLines = 0;
+        
+        card2.addSubview(label)
+        updateContentViewWith(card2)
+    }
+    
+    func makePhotoCard(images: Array<UIImage>) {
+        if (images.count == 0) {
+            return;
+        }
+        
+        card3 = UIView(frame: CGRectMake(X_BUFFER,  card2.frame.size.height + card2.frame.origin.y + Y_BUFFER, self.view.frame.size.width - (2 * X_BUFFER), self.view.frame.size.height / 2))
+        contentView.addSubview(card3)
+        makeCard(card3)
+        card3.backgroundColor = UIColor.whiteColor()
+        
+        var pic1:UIImageView = UIImageView(image: images[0])
+        pic1.frame = CGRectMake(0, 0, card3.frame.size.width - (2 * X_BUFFER), card3.frame.size.height - (2 * Y_BUFFER))
+        pic1.center = CGPointMake(card3.frame.size.width/2, card3.frame.size.height/2)
+        pic1.contentMode = UIViewContentMode.ScaleAspectFit
+        
+        card3.addSubview(pic1)
+        
+        updateContentViewWith(card3)
+    }
+    
+    func makeLamenessCard() {
+        card4 = UIView(frame: CGRectMake(X_BUFFER, card3.frame.size.height + card3.frame.origin.y + Y_BUFFER, self.view.frame.size.width - (2 * X_BUFFER), 170))
+        contentView.addSubview(card4)
+        makeCard(card4)
+        card4.backgroundColor = UIColor.whiteColor()
+        
+        updateContentViewWith(card4)
+    }
+    
+    func makeFlightCards() {
+        card5 = UIView(frame: CGRectMake(X_BUFFER, card4.frame.size.height + card4.frame.origin.y + Y_BUFFER, self.view.frame.size.width - (2 * X_BUFFER), 85))
+        contentView.addSubview(card5)
+        makeCard(card5)
+        card5.backgroundColor = UIColor.whiteColor()
+        
+        var label = UILabel(frame: CGRectMake(X_BUFFER, 0, card5.frame.size.width - (2 * Y_BUFFER), card5.frame.size.height))
+        label.text = "Salvage your dignity and fly back on\n Tuesday, March 10th"
+        card5.addSubview(label)
+        label.textAlignment = NSTextAlignment.Center
+        label.numberOfLines = 2
+        
+        flightButton = UIButton(frame: CGRectMake(
+            card5.frame.origin.x,
+            card5.frame.origin.y + card5.frame.size.height + 2,
+            card5.frame.size.width,
+            59))
+        flightButton.backgroundColor = TRIP_COLOR
+        flightButton.setTitle("Fly me back!", forState: .Normal)
+        flightButton.titleLabel?.textColor = UIColor.whiteColor()
+        makeCard(flightButton)
+        contentView.addSubview(flightButton)
+        
+        wrongButton = UIButton(frame: CGRectMake(
+            card5.frame.origin.x,
+            flightButton.frame.origin.y + flightButton.frame.size.height + 2,
+            card5.frame.size.width,
+            59))
+        wrongButton.backgroundColor = WRONG_COLOR
+        wrongButton.setTitle("You're wrong, I've been here", forState: .Normal)
+        wrongButton.titleLabel?.textColor = UIColor.whiteColor()
+        makeCard(wrongButton)
+        contentView.addSubview(wrongButton)
+        
+        updateContentViewWith(wrongButton)
+    }
+    
+    func updateContentViewWith(view:UIView) {
+        contentView.frame = CGRectMake(0, 0, self.view.frame.size.width, view.frame.size.height + view.frame.origin.y + Y_BUFFER)
     }
     
     func darkenCoverPhoto() {
@@ -29,7 +156,7 @@ class ViewController: UIViewController {
         darkImage.frame = coverPhoto.frame
         coverPhoto.addSubview(darkImage)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -48,7 +175,7 @@ class ViewController: UIViewController {
         layer.shadowOpacity = 0.1
         layer.shadowRadius = 2
     }
-    
+
 
     /*
     // MARK: - Navigation
