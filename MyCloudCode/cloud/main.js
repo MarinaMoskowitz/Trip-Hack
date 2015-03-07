@@ -2,7 +2,7 @@
 //For Parse hosting
 //require('cloud/app.js');
 
-tripApiKey = "HackTripAdvisor-ade29ff43aed"
+tripApiKey = "?=HackTripAdvisor-ade29ff43aed"
 tripBaseUrl = "http://api.tripadvisor.com/api/partner/2.0/"
 
 // Use Parse.Cloud.define to define as many cloud functions as you want.
@@ -15,7 +15,11 @@ function getLocationID(lat, long) {
 	// this returns location ID from trip api call
 	// TODO: this is hardcoded test data
 	// 	 that returns Boston locID
-	return 60745
+    var req = new XMLHttpRequest();
+    req.open("GET" tripApiKey + lat + "," + long + tripBaseUrl, false);
+    req.send();
+    var tripData = JSON.parse(req.responseText);
+    return tripData["data"][0]["location_id"];
 };
 
 function getPageInfo(locationID) {
@@ -43,6 +47,7 @@ Parse.Cloud.define("getTripData", function(request, response) {
 	console.log("this is a test:", request.params.locationData);
 	newCoord = request.params.locationData['newCoord']
 	locID = getLocationID(newCoord['lat'], newCoord['long'])
+    console.log(locID)
 	info = getPageInfo(locID)
 	response.success(info)
 });

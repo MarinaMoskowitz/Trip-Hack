@@ -21,13 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Override point for customization after application launch.
         Parse.setApplicationId("Mcwsrg095L8JYxQLaKXni8kANhStVh7sYrx79wBW", clientKey:"4bVcnNEP2QNZRaVzXSmMVQ8in76vdjvCPUtKw3j2")
 
-        PFCloud.callFunctionInBackground("getTripData", withParameters:["locationData": ["oldCoord": [39.7305177, -104.9743303], "newCoord": [39.7305177,-104.9743303]]], block: { (results:AnyObject!, error:NSError!) -> Void in
-            if error != nil {
-
-            } else {
-                //println(results)
-            }
-        })
+       
         
 
         self.locationManager.delegate = self
@@ -48,13 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
-        self.locationManager.startMonitoringSignificantLocationChanges()
     }
     
 
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .Authorized || status == .AuthorizedWhenInUse {
             locationManager.startMonitoringVisits()
+            self.locationManager.distanceFilter = 10
+            locationManager.startUpdatingLocation()
             locationManager.startMonitoringSignificantLocationChanges()
         }
     }
@@ -65,19 +60,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        
         var oldLat = newLocation.coordinate.latitude
         var oldLong = newLocation.coordinate.longitude
         if((oldLocation) != nil) {
             oldLat = oldLocation.coordinate.latitude
             oldLong = oldLocation.coordinate.longitude
         }
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let sysLat = defaults.doubleForKey("latitude")
+        let sysLong = defaults.doubleForKey("longitude")
         var newLat = newLocation.coordinate.latitude
         var newLong = newLocation.coordinate.longitude
-        println("LOCATION CHANGED \n (\(oldLat), \(oldLong)) -> (\(newLat), \(newLong))")
+        if(sysLat != newLat || sysLong != newLong){
+            defaults.setObject(newLat, forKey: "latitutde")
+            defaults.setObject(newLong, forKey: "longitude")
+            PFCloud.callFunctionInBackground("getTripData", withParameters:["locationData": ["oldCoord": [sysLat, sysLong], "newCoord": [newLat,newLong]]], block: { (results:AnyObject!, error:NSError!) -> Void in
+            if error != nil {
+
+            } else {
+                //println(results)
+            }
+        })
+        }
+        
+        
     }
+    /*
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-      println(locations)
+      println("UPDATED LOCS \n \(locations)")
         /*
         var oldLat = newLocation.coordinate.latitude
         var oldLong = newLocation.coordinate.longitude
@@ -90,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         println("LOCATION CHANGED \n (\(oldLat), \(oldLong)) -> (\(newLat), \(newLong))")
     */
     }
-
+*/
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
