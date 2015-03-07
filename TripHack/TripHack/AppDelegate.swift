@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        Parse.setApplicationId("Mcwsrg095L8JYxQLaKXni8kANhStVh7sYrx79wBW", clientKey:"4bVcnNEP2QNZRaVzXSmMVQ8in76vdjvCPUtKw3j2")
+        
+        //var object = PFObject(className: "TestClass")
+        //object.addObject("Banana", forKey: "favoriteFood")
+        //object.addObject("Chocolate", forKey: "favoriteIceCream")
+        //object.saveInBackground()
+        
+        //PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions);
         return true
     }
 
