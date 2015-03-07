@@ -22,9 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         Parse.setApplicationId("Mcwsrg095L8JYxQLaKXni8kANhStVh7sYrx79wBW", clientKey:"4bVcnNEP2QNZRaVzXSmMVQ8in76vdjvCPUtKw3j2")
         
 
-        PFCloud.callFunctionInBackground("getTripData", withParameters:["locationData":[39.7305177,-104.9743303]])
-        
-self.locationManager.delegate = self
+        PFCloud.callFunctionInBackground("getTripData", withParameters:["locationData": ["oldCoord": [39.7305177, -104.9743303], "newCoord": [39.7305177,-104.9743303]]], block: { (results:AnyObject!, error:NSError!) -> Void in
+            if error != nil {
+
+            } else {
+                println(results)
+            }
+        })
+
+        self.locationManager.delegate = self
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()

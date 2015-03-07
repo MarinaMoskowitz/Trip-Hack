@@ -27,7 +27,7 @@ function getPageInfo(locationID) {
 	// TODO: hardcoded. Returns test dictionary
 	info = {
 		'location': 'Boston, Massachusetts',
-		'description': 'walk here for a while, you know, do stuff'',
+		'description': 'walk here for a while, you know, do stuff',
 		'rating': 5,
 		'number_ratings': 200,
 		'title': 'Freedom Trail',
