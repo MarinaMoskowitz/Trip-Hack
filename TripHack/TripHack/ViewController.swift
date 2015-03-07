@@ -33,6 +33,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var detailsLabel : UILabel = UILabel()
     var imageArray : Array<UIImage> = []
     var flightLabel : UILabel = UILabel()
+    var extraPicture : UIImageView = UIImageView()
     
     var flightURL : String = "http://www.google.com"
     var activityURL : String = "http://www.tripadvisor.com"
@@ -40,6 +41,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var picturePVC : UIPageViewController = UIPageViewController()
     var height : CGFloat = 0.00
     var coverPhotoCenterY : CGFloat = 0.00
+
+    var darkImage : UIImageView = UIImageView()
+    var blurView : UIVisualEffectView = UIVisualEffectView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,8 +82,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         detailsLabel.text = location! + "\n\n" + details!
     }
     
-    func setImages(array: Array<UIImage>) {
-        
+    func setExtraImage(image: UIImage) {
+        extraPicture.image = image
     }
     
     func setFlightDate(dateString: NSString) {
@@ -141,18 +145,14 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         makeCard(card3)
         card3.backgroundColor = UIColor.whiteColor()
         
-        var pic1:UIImageView = UIImageView(image: images[0])
-        pic1.frame = CGRectMake(0, 0, card3.frame.size.width - (2 * X_BUFFER), card3.frame.size.height - (2 * Y_BUFFER))
-        pic1.center = CGPointMake(card3.frame.size.width/2, card3.frame.size.height/2)
-        pic1.contentMode = UIViewContentMode.ScaleAspectFit
+        extraPicture = UIImageView(image: images[0])
+        extraPicture.frame = CGRectMake(0, 0, card3.frame.size.width - (2 * X_BUFFER), card3.frame.size.height - (2 * Y_BUFFER))
+        extraPicture.center = CGPointMake(card3.frame.size.width/2, card3.frame.size.height/2)
+        extraPicture.contentMode = UIViewContentMode.ScaleAspectFit
         
-        card3.addSubview(pic1)
+        card3.addSubview(extraPicture)
         
         updateContentViewWith(card3)
-    }
-    
-    func setupPageViewController() {
-        picturePVC = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
     }
 
     func makeLamenessCard() {
@@ -222,9 +222,16 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func darkenCoverPhoto() {
-        var darkImage = UIImageView(image: UIImage(named:"fadeView"))
+        darkImage = UIImageView(image: UIImage(named:"fadeView"))
         darkImage.frame = coverPhoto.frame
+        darkImage.contentMode = UIViewContentMode.ScaleAspectFill
         coverPhoto.addSubview(darkImage)
+
+        var darkBlur = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        var blurView = UIVisualEffectView(effect: darkBlur)
+        blurView.frame = coverPhoto.bounds
+        coverPhoto.addSubview(blurView)
+        blurView.alpha = 0
     }
     
     override func didReceiveMemoryWarning() {
