@@ -75,6 +75,9 @@
                                                         <state key="normal" image="share">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="shareTouchUpInside:" destination="BGN-U4-I16" eventType="touchUpInside" id="JAL-og-Te9"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VNN-EZ-y1M">
                                                         <rect key="frame" x="256" y="17" width="79" height="76"/>
@@ -82,6 +85,9 @@
                                                         <state key="normal" image="bucketList">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="addToBucketTouchUpInside:" destination="BGN-U4-I16" eventType="touchUpInside" id="5EY-jO-bPk"/>
+                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" id="Tqg-Ia-iNc">
                                                         <rect key="frame" x="122" y="40" width="1" height="30"/>
@@ -99,6 +105,9 @@
                                                         <state key="normal" image="flyBack">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="flyBackTouchUpInside:" destination="BGN-U4-I16" eventType="touchUpInside" id="5rb-dY-E6n"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -123,11 +132,34 @@
                         <outlet property="profilePicture" destination="nUZ-Dk-cEZ" id="iMT-Ir-kIc"/>
                         <outlet property="scrollView" destination="yPT-nB-yh5" id="AGa-AH-p5i"/>
                         <outlet property="titleLabel" destination="zlB-78-tod" id="WDr-mg-vpR"/>
+                        <segue destination="N5Y-uH-SE3" kind="push" identifier="toWebView" id="X1L-ua-ekU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hw-Qi-QFz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="461.33333333333331" y="389.07999999999998"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="REM-aN-b7K">
+            <objects>
+                <viewController id="N5Y-uH-SE3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K27-xw-Dxx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="Qf6-gQ-Dlx">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="r2z-Qu-EJC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uEj-Iq-UJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="889" y="389"/>
         </scene>
     </scenes>
     <resources>
