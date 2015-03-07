@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99775A721AAB64C400ED83CA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99775A711AAB64C400ED83CA /* WebViewController.swift */; };
 		99F52FEC1AAA9FA2003FF448 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F52FEB1AAA9FA2003FF448 /* AppDelegate.swift */; };
 		99F52FF11AAA9FA2003FF448 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F52FEF1AAA9FA2003FF448 /* Main.storyboard */; };
 		99F52FF31AAA9FA2003FF448 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F52FF21AAA9FA2003FF448 /* Images.xcassets */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		99775A711AAB64C400ED83CA /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		99F52FE61AAA9FA2003FF448 /* TripHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99F52FEA1AAA9FA2003FF448 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99F52FEB1AAA9FA2003FF448 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				99F530221AAB0E66003FF448 /* ViewController.swift */,
 				99F5301A1AAAB391003FF448 /* NavigationController.swift */,
 				E0B92ABD1AAAA9BE00A2C1FC /* BridgeHeader.h */,
+				99775A711AAB64C400ED83CA /* WebViewController.swift */,
 				99F52FF21AAA9FA2003FF448 /* Images.xcassets */,
 				99F52FF41AAA9FA2003FF448 /* LaunchScreen.xib */,
 				99F52FE91AAA9FA2003FF448 /* Supporting Files */,
@@ -291,6 +294,7 @@
 				99F530211AAAF06A003FF448 /* (null) in Sources */,
 				99F52FEC1AAA9FA2003FF448 /* AppDelegate.swift in Sources */,
 				99F530231AAB0E66003FF448 /* ViewController.swift in Sources */,
+				99775A721AAB64C400ED83CA /* WebViewController.swift in Sources */,
 				99F5301C1AAAB391003FF448 /* NavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
