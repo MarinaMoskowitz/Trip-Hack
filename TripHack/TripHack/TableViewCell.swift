@@ -13,7 +13,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var storyLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var tripButton: UIButton!
-    var imgurLink : String
+    var imgurLink : String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()

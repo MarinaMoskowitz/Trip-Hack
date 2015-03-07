@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--POON CITY-->
         <scene sceneID="ahl-xL-UKq">
             <objects>
                 <tableViewController storyboardIdentifier="tableViewController" id="tP6-3O-rK4" customClass="TableViewController" customModule="TripHack" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,7 +61,7 @@
                             <outlet property="delegate" destination="tP6-3O-rK4" id="4ze-YY-7Mb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="cBp-o9-xxO"/>
+                    <navigationItem key="navigationItem" title="POON CITY" id="cBp-o9-xxO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E6G-tD-Zef" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
