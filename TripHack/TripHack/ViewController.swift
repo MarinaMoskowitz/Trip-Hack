@@ -32,6 +32,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var wrongButton : UIButton = UIButton()
     var detailsLabel : UILabel = UILabel()
     var imageArray : Array<UIImage> = []
+    var flightLabel : UILabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,13 +62,23 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         titleLabel.text = text
     }
     
-    func setDetails(text:NSString) {
-        detailsLabel.text = text
+    func setDetails(location: NSString, details:NSString) {
+        detailsLabel.text = location + "\n\n" + details
     }
     
     func setImages(array: Array<UIImage>) {
         
     }
+    
+    func setFlightDate(dateString: NSString) {
+        flightLabel.text = "Salvage your dignity and fly back on\n" + dateString
+    }
+    
+    
+    
+    
+    
+    
     
     func setupPlacement() {
         makeCard(card1)
@@ -151,11 +162,11 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         makeCard(card5)
         card5.backgroundColor = UIColor.whiteColor()
         
-        var label = UILabel(frame: CGRectMake(X_BUFFER, 0, card5.frame.size.width - (2 * Y_BUFFER), card5.frame.size.height))
-        label.text = "Salvage your dignity and fly back on\n Tuesday, March 10th"
-        card5.addSubview(label)
-        label.textAlignment = NSTextAlignment.Center
-        label.numberOfLines = 2
+        flightLabel = UILabel(frame: CGRectMake(X_BUFFER, 0, card5.frame.size.width - (2 * Y_BUFFER), card5.frame.size.height))
+        flightLabel.text = "Salvage your dignity and fly back on\n Tuesday, March 10th"
+        card5.addSubview(flightLabel)
+        flightLabel.textAlignment = NSTextAlignment.Center
+        flightLabel.numberOfLines = 2
         
         flightButton = UIButton(frame: CGRectMake(
             card5.frame.origin.x,
@@ -214,15 +225,5 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView!) {
 
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
