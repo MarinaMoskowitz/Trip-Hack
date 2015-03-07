@@ -37,6 +37,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     var flightURL : String = "http://www.google.com"
     var activityURL : String = "http://www.tripadvisor.com"
+
+    var picturePVC : UIPageViewController = UIPageViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,10 +88,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         activityURL = link
     }
     
-    
-    
-    
-    
+
     
     
     func setupPlacement() {
@@ -148,6 +147,10 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         updateContentViewWith(card3)
     }
     
+    func setupPageViewController() {
+        picturePVC = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
+    }
+
     func makeLamenessCard() {
         card4 = UIView(frame: CGRectMake(X_BUFFER, card3.frame.size.height + card3.frame.origin.y + Y_BUFFER, self.view.frame.size.width - (2 * X_BUFFER), 170))
         contentView.addSubview(card4)
@@ -155,7 +158,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         card4.backgroundColor = UIColor.whiteColor()
         
         var label = UILabel(frame: CGRectMake(X_BUFFER, Y_BUFFER, card4.frame.size.width - (2 * Y_BUFFER), 50))
-        label.text = "Compared to your friends, \nyour lameness score is:"
+        label.text = "Compared to your friends, \nyou are this lame:"
         var lameness = UILabel(frame: CGRectMake(X_BUFFER, Y_BUFFER + label.frame.size.height + label.frame.origin.y, card4.frame.size.width - (2 * Y_BUFFER), 70))
         lameness.text = String(Int(arc4random_uniform(100)))
         lameness.textAlignment = NSTextAlignment.Center
@@ -246,11 +249,47 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     // BUTTON FUNCTIONS
     
     @IBAction func flyBackTouchUpInside(sender: AnyObject) {
+        self.performSegueWithIdentifier("toWebView", sender: flightURL)
     }
     @IBAction func shareTouchUpInside(sender: AnyObject) {
+
+        let alertController = UIAlertController(title: "Share", message: "That you totally missed this awesome experience", preferredStyle: .ActionSheet)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+        }
+        alertController.addAction(cancelAction)
+
+        let OKAction = UIAlertAction(title: "Twitter", style: .Default) { (action) in
+        }
+        alertController.addAction(OKAction)
+
+        let OKAction2 = UIAlertAction(title: "Facebook", style: .Default) { (action) in
+        }
+        alertController.addAction(OKAction2)
+
+        let OKAction3 = UIAlertAction(title: "TripAdvisor", style: .Default) { (action) in
+        }
+        alertController.addAction(OKAction3)
+
+        self.presentViewController(alertController, animated: true) {
+        }
     }
     @IBAction func addToBucketTouchUpInside(sender: AnyObject) {
-  
+        let alertController = UIAlertController(title: "Added to BucketList", message: "We'll remind you sometime before you die", preferredStyle: .Alert)
+
+        let cancelAction = UIAlertAction(title: "whoop whoop", style: .Cancel) { (action) in
+            println(action)
+        }
+
+        let destroyAction = UIAlertAction(title: "undo", style: .Destructive) { (action) in
+            println(action)
+        }
+        alertController.addAction(destroyAction)
+        alertController.addAction(cancelAction)
+
+        self.presentViewController(alertController, animated: true) {
+
+        }
     }
     func flyMeBackTouchUpInside() {
         self.performSegueWithIdentifier("toWebView", sender: flightURL)

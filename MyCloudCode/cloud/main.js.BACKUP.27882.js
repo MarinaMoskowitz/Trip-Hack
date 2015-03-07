@@ -56,9 +56,6 @@ function getPageInfo(locationID) {
 	/
 */
 
-
-
-
 // request.params.locationData -> {oldData: {lat, long}}
 Parse.Cloud.define("getTripData", function(request, response) {
 	console.log("this is a test:", request.params.locationData);
@@ -67,6 +64,30 @@ Parse.Cloud.define("getTripData", function(request, response) {
 		tripData = JSON.parse(results.text);
 		city_id = tripData["data"][0]["ancestors"][0]["location_id"];
 		console.log("city_id: " + city_id);
+<<<<<<< HEAD
+		response.success(tripData["data"]);
+		/*
+		getAttraction(city_id).then( function(results) {
+				console.log("Got attraction: ");
+				tripData = JSON.parse(results.text);
+				attraction = tripData["data"][0]; 
+				//console.log(attraction);
+				info = {};
+				//info ["location"] = attraction["location_string"];
+				console.log(info);
+				//info ["description"] = attraction["description_string"];
+				//info ["rating"] = attraction["rating_string"];
+				info ["num_reviews"] = attraction["review_string"];
+				info ["title"] = attraction["name_string"];
+				console.log(info);
+				response.success(info);
+		
+		//getPhoto(attraction["location_id"]).then( function(results) {
+			//info ['photos']
+		//}
+		});*/
+	});
+=======
 		//response.success(tripData["data"]);
 		return getAttraction(city_id);
 	}).then(function(city_results) {
@@ -76,8 +97,8 @@ Parse.Cloud.define("getTripData", function(request, response) {
                 //console.log(city_results.text)
                 attraction = tripData["data"][0]; 
                 console.log("attraction \n");
-                //console.log(attraction);
-                //console.log(attraction.review_string);
+                console.log(attraction);
+                console.log(attraction.review_string);
                 info = {};
                 //info ["location"] = attraction["location_string"];
                 console.log(info);
@@ -91,6 +112,7 @@ Parse.Cloud.define("getTripData", function(request, response) {
         }).then(function(info) {
                 response.success(info);
         });
+>>>>>>> origin/master
     //console.log(locID)
 	//info = getPageInfo(locID)
 });

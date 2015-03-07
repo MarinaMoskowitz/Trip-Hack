@@ -18,7 +18,6 @@ class NavigationController: UINavigationController {
 
     func navigationBarSetup() {
         self.navigationBar.translucent = true
-
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
