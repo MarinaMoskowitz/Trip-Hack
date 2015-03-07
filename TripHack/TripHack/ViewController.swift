@@ -24,6 +24,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var card1: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var friendsLabel: UILabel!
+    @IBOutlet weak var contentView: UIView!
     var card2 : UIView = UIView()
     var card3 : UIView = UIView()
     var card4 : UIView = UIView()
@@ -38,8 +39,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var activityURL : String = "http://www.tripadvisor.com"
 
     var picturePVC : UIPageViewController = UIPageViewController()
-    var height : CGFloat = 0.00
-    var coverPhotoCenterY : CGFloat = 0.00
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +51,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLayoutSubviews() {
         scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
-        scrollView.contentSize = CGSizeMake(self.view.frame.size.width, height)
-        coverPhotoCenterY = coverPhoto.center.y
+        scrollView.contentSize = contentView.frame.size
     }
     
     
@@ -67,15 +65,11 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setTitle(text:NSString) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        titleLabel.text = defaults.stringForKey("title")
+        titleLabel.text = text
     }
     
     func setDetails(location: NSString, details:NSString) {
-        let defaults = NSUserDefaults.standardUserDefaults();
-        var location = defaults.stringForKey("location")
-        var details = defaults.stringForKey("details")
-        detailsLabel.text = location! + "\n\n" + details!
+        detailsLabel.text = location + "\n\n" + details
     }
     
     func setImages(array: Array<UIImage>) {
@@ -93,6 +87,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     func setActivityURL(link: NSString) {
         activityURL = link
     }
+    
+
     
     
     func setupPlacement() {
@@ -119,7 +115,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         card2 = UIView(frame: CGRectMake(X_BUFFER, card1.frame.size.height + card1.frame.origin.y + Y_BUFFER, self.view.frame.size.width - (2 * X_BUFFER), 200));
         card2.backgroundColor = UIColor.whiteColor()
         makeCard(card2)
-        scrollView.addSubview(card2)
+        contentView.addSubview(card2)
         
         detailsLabel = UILabel(frame: CGRectMake(15, 10, card2.frame.size.width - (2 * 15), 170))
         detailsLabel.text = location + "\n\n" + description
@@ -137,7 +133,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         }
         
         card3 = UIView(frame: CGRectMake(X_BUFFER,  card2.frame.size.height + card2.frame.origin.y + Y_BUFFER, self.view.frame.size.width - (2 * X_BUFFER), self.view.frame.size.height / 2))
-        scrollView.addSubview(card3)
+        contentView.addSubview(card3)
         makeCard(card3)
         card3.backgroundColor = UIColor.whiteColor()
         
@@ -157,7 +153,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 
     func makeLamenessCard() {
         card4 = UIView(frame: CGRectMake(X_BUFFER, card3.frame.size.height + card3.frame.origin.y + Y_BUFFER, self.view.frame.size.width - (2 * X_BUFFER), 170))
-        scrollView.addSubview(card4)
+        contentView.addSubview(card4)
         makeCard(card4)
         card4.backgroundColor = UIColor.whiteColor()
         
@@ -178,7 +174,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     func makeFlightCards() {
         card5 = UIView(frame: CGRectMake(X_BUFFER, card4.frame.size.height + card4.frame.origin.y + Y_BUFFER, self.view.frame.size.width - (2 * X_BUFFER), 85))
-        scrollView.addSubview(card5)
+        contentView.addSubview(card5)
         makeCard(card5)
         card5.backgroundColor = UIColor.whiteColor()
         
@@ -197,7 +193,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         flightButton.setTitle("Fly me back!", forState: .Normal)
         flightButton.titleLabel?.textColor = UIColor.whiteColor()
         makeCard(flightButton)
-        scrollView.addSubview(flightButton)
+        contentView.addSubview(flightButton)
         flightButton.addTarget(self, action: "flyMeBackTouchUpInside", forControlEvents: UIControlEvents.TouchUpInside)
         
         wrongButton = UIButton(frame: CGRectMake(
@@ -209,7 +205,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         wrongButton.setTitle("You're wrong, I've been here", forState: .Normal)
         wrongButton.titleLabel?.textColor = UIColor.whiteColor()
         makeCard(wrongButton)
-        scrollView.addSubview(wrongButton)
+        contentView.addSubview(wrongButton)
         wrongButton.addTarget(self, action: "youreWrongTouchUpInside", forControlEvents: UIControlEvents.TouchUpInside)
         
         updateContentViewWith(wrongButton)
@@ -218,7 +214,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func updateContentViewWith(view:UIView) {
-        height = view.frame.size.height + view.frame.origin.y + Y_BUFFER
+        contentView.frame = CGRectMake(0, 0, self.view.frame.size.width, view.frame.size.height + view.frame.origin.y + Y_BUFFER)
     }
     
     func darkenCoverPhoto() {
@@ -247,20 +243,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
 
     func scrollViewDidScroll(scrollView: UIScrollView!) {
-        var offset = scrollView.contentOffset.y
-        var avatarTransform = CATransform3DIdentity
-        var headerTransform = CATransform3DIdentity
 
-        if offset < 0 {
-         
-             let headerScaleFactor:CGFloat = -(offset) / coverPhoto.bounds.height
-             let headerSizevariation = ((coverPhoto.bounds.height * (1.0 + headerScaleFactor)) - coverPhoto.bounds.height)/2.0
-             headerTransform = CATransform3DTranslate(headerTransform, 0, headerSizevariation, 0)
-             headerTransform = CATransform3DScale(headerTransform, 1.0 + headerScaleFactor, 1.0 + headerScaleFactor, 0)
-         
-             coverPhoto.layer.transform = headerTransform
-            coverPhoto.center = CGPointMake(coverPhoto.center.x, coverPhotoCenterY + offset)
-        }
     }
     
     // BUTTON FUNCTIONS
