@@ -1,27 +1,21 @@
 //
-//  NavigationController.swift
+//  ViewController.swift
 //  TripHack
 //
-//  Created by Richard Kim on 3/6/15.
+//  Created by Richard Kim on 3/7/15.
 //  Copyright (c) 2015 MarinaLLC. All rights reserved.
 //
 
 import UIKit
 
-class NavigationController: UINavigationController {
+class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBarSetup()
 
         // Do any additional setup after loading the view.
     }
 
-    func navigationBarSetup() {
-        self.navigationBar.backgroundColor = UIColor.blackColor()
-        self.navigationBar.alpha = 0.29
-
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

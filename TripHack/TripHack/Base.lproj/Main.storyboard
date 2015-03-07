@@ -23,35 +23,53 @@
         <!--View Controller-->
         <scene sceneID="QRN-NV-ULO">
             <objects>
-                <viewController id="BGN-U4-I16" sceneMemberID="viewController">
+                <viewController id="BGN-U4-I16" customClass="ViewController" customModule="TripHack" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HVI-pv-dZu"/>
                         <viewControllerLayoutGuide type="bottom" id="O2D-Pp-5wf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dpU-2P-E06">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yPT-nB-yh5">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yPT-nB-yh5">
+                                <rect key="frame" x="0.0" y="-64" width="600" height="706"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEL-H6-Jt8">
-                                        <rect key="frame" x="64" y="42" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="defaultBackground" translatesAutoresizingMaskIntoConstraints="NO" id="M1u-nv-0kU">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="vqw-GR-Rcr"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="02f-f1-tlk">
+                                        <rect key="frame" x="15" y="150" width="100" height="100"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultProfile" translatesAutoresizingMaskIntoConstraints="NO" id="nUZ-Dk-cEZ">
+                                                <rect key="frame" x="3" y="3" width="94" height="94"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="M1u-nv-0kU" firstAttribute="top" secondItem="yPT-nB-yh5" secondAttribute="top" id="CMj-xu-XnQ"/>
+                                    <constraint firstItem="02f-f1-tlk" firstAttribute="top" secondItem="M1u-nv-0kU" secondAttribute="bottom" constant="-50" id="hYC-tU-RWc"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="R54-om-5TN"/>
-                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hw-Qi-QFz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="865" y="411"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultBackground" width="1024" height="408"/>
+        <image name="defaultProfile" width="145" height="145"/>
+    </resources>
 </document>
