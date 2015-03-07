@@ -64,30 +64,28 @@ Parse.Cloud.define("getTripData", function(request, response) {
 		tripData = JSON.parse(results.text);
 		city_id = tripData["data"][0]["ancestors"][0]["location_id"];
 		console.log("city_id: " + city_id);
-		//response.success(tripData["data"]);
-		return getAttraction(city_id);
-	}).then(function(city_results) {
-                //console.log("Got attraction: ");
-                tripData = JSON.parse(city_results.text);
-                //console.log("city results \n");
-                //console.log(city_results.text)
-                attraction = tripData["data"][0]; 
-                console.log("attraction \n");
-                console.log(attraction);
-                console.log(attraction.review_string);
-                info = {};
-                //info ["location"] = attraction["location_string"];
-                console.log(info);
-                //info ["description"] = attraction["description_string"];
-                //info ["rating"] = attraction["rating_string"];
-                info ["num_reviews"] = attraction["review_string"];
-                info ["title"] = attraction["name_string"];
-                console.log("info 2 \n");
-                console.log(info);
-                return info;
-        }).then(function(info) {
-                response.success(info);
-        });
+		response.success(tripData["data"]);
+		/*
+		getAttraction(city_id).then( function(results) {
+				console.log("Got attraction: ");
+				tripData = JSON.parse(results.text);
+				attraction = tripData["data"][0]; 
+				//console.log(attraction);
+				info = {};
+				//info ["location"] = attraction["location_string"];
+				console.log(info);
+				//info ["description"] = attraction["description_string"];
+				//info ["rating"] = attraction["rating_string"];
+				info ["num_reviews"] = attraction["review_string"];
+				info ["title"] = attraction["name_string"];
+				console.log(info);
+				response.success(info);
+		
+		//getPhoto(attraction["location_id"]).then( function(results) {
+			//info ['photos']
+		//}
+		});*/
+	});
     //console.log(locID)
 	//info = getPageInfo(locID)
 });
