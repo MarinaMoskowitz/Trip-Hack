@@ -21,7 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Override point for customization after application launch.
         Parse.setApplicationId("Mcwsrg095L8JYxQLaKXni8kANhStVh7sYrx79wBW", clientKey:"4bVcnNEP2QNZRaVzXSmMVQ8in76vdjvCPUtKw3j2")
         
-        self.locationManager.delegate = self
+
+        PFCloud.callFunctionInBackground("getTripData", withParameters:["locationData":[39.7305177,-104.9743303]])
+        
+self.locationManager.delegate = self
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()

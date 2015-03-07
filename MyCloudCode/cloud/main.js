@@ -1,5 +1,6 @@
+
 //For Parse hosting
-require('cloud/app.js');
+//require('cloud/app.js');
 
 tripApiKey = "HackTripAdvisor-ade29ff43aed"
 tripBaseUrl = "http://api.tripadvisor.com/api/partner/2.0/"
@@ -23,5 +24,5 @@ function getPageInfo(locationID) {
 // request.params.locationData -> {oldData: {lat, long}}
 Parse.Cloud.define("getTripData", function(request, response) {
 	console.log("this is a test:", request.params.locationData);
-}
+});
 
