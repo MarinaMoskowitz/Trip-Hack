@@ -8,17 +8,29 @@
 
 import UIKit
 import Parse
+import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
-
-
+    let locationManager = CLLocationManager()
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Parse.setApplicationId("Mcwsrg095L8JYxQLaKXni8kANhStVh7sYrx79wBW", clientKey:"4bVcnNEP2QNZRaVzXSmMVQ8in76vdjvCPUtKw3j2")
         
+        self.locationManager.delegate = self
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
+        
+
+        if CLLocationManager.authorizationStatus() == .NotDetermined {
+            locationManager.requestAlwaysAuthorization()
+        }
         //var object = PFObject(className: "TestClass")
         //object.addObject("Banana", forKey: "favoriteFood")
         //object.addObject("Chocolate", forKey: "favoriteIceCream")
@@ -36,6 +48,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        
+        //self.locationManager.startMonitoringSignificantLocationChanges()
+         self.locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .Authorized || status == .AuthorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        var oldLat = oldLocation.coordinate.latitude
+        var oldLong = oldLocation.coordinate.longitude
+        var newLat = newLocation.coordinate.latitude
+        var newLong = newLocation.coordinate.longitude
+        println("LOCATION CHANGED")
     }
 
     func applicationWillEnterForeground(application: UIApplication) {

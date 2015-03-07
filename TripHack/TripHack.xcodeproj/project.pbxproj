@@ -13,6 +13,7 @@
 		99F52FF61AAA9FA2003FF448 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F52FF41AAA9FA2003FF448 /* LaunchScreen.xib */; };
 		99F530021AAA9FA2003FF448 /* TripHackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F530011AAA9FA2003FF448 /* TripHackTests.swift */; };
 		99F5301C1AAAB391003FF448 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F5301A1AAAB391003FF448 /* NavigationController.swift */; };
+		E02ABC6B1AAAEFD5002701B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E02ABC6A1AAAEFD5002701B2 /* CoreLocation.framework */; };
 		E0B92AA31AAAA30A00A2C1FC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B92A9E1AAAA30A00A2C1FC /* Bolts.framework */; };
 		E0B92AA41AAAA30A00A2C1FC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B92A9F1AAAA30A00A2C1FC /* Parse.framework */; };
 		E0B92AA51AAAA30A00A2C1FC /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B92AA01AAAA30A00A2C1FC /* ParseCrashReporting.framework */; };
@@ -51,6 +52,7 @@
 		99F530001AAA9FA2003FF448 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99F530011AAA9FA2003FF448 /* TripHackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHackTests.swift; sourceTree = "<group>"; };
 		99F5301A1AAAB391003FF448 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		E02ABC6A1AAAEFD5002701B2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E0B92A9E1AAAA30A00A2C1FC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		E0B92A9F1AAAA30A00A2C1FC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E0B92AA01AAAA30A00A2C1FC /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E02ABC6B1AAAEFD5002701B2 /* CoreLocation.framework in Frameworks */,
 				E0B92ABB1AAAA3B500A2C1FC /* libsqlite3.dylib in Frameworks */,
 				E0B92AB91AAAA3AB00A2C1FC /* libz.dylib in Frameworks */,
 				E0B92AB71AAAA39B00A2C1FC /* SystemConfiguration.framework in Frameworks */,
@@ -163,6 +166,7 @@
 		E0B92ABC1AAAA3CD00A2C1FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E02ABC6A1AAAEFD5002701B2 /* CoreLocation.framework */,
 				E0B92A9E1AAAA30A00A2C1FC /* Bolts.framework */,
 				E0B92A9F1AAAA30A00A2C1FC /* Parse.framework */,
 				E0B92AA01AAAA30A00A2C1FC /* ParseCrashReporting.framework */,
