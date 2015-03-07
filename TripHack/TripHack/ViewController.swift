@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
@@ -15,12 +16,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var card1: UIView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         darkenCoverPhoto()
         applyPlainShadow(profileBackground)
         makeCard(card1)
         scrollView.contentSize = self.view.frame.size
+        
+        
         // Do any additional setup after loading the view.
     }
     
