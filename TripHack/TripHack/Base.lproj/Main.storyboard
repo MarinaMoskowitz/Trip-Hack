@@ -176,7 +176,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backButton" width="38" height="38"/>
+        <image name="backButton" width="77" height="77"/>
         <image name="bucketList" width="103" height="147"/>
         <image name="defaultBackground" width="1024" height="408"/>
         <image name="defaultProfile" width="145" height="145"/>
