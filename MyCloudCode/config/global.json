@@ -1,0 +1,11 @@
+{
+    "applications": {
+        "Trip-Hack": {
+            "applicationId": "Mcwsrg095L8JYxQLaKXni8kANhStVh7sYrx79wBW", 
+            "masterKey": "tos3QAFf3q7hUStkPHhMMjGYgnNCLyJMa8fKb8WO"
+        }, 
+        "_default": {
+            "link": "Trip-Hack"
+        }
+    }
+}
