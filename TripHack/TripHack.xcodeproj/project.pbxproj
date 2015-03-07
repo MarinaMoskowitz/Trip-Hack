@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		99F52FEC1AAA9FA2003FF448 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F52FEB1AAA9FA2003FF448 /* AppDelegate.swift */; };
-		99F52FEE1AAA9FA2003FF448 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F52FED1AAA9FA2003FF448 /* ViewController.swift */; };
 		99F52FF11AAA9FA2003FF448 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F52FEF1AAA9FA2003FF448 /* Main.storyboard */; };
 		99F52FF31AAA9FA2003FF448 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F52FF21AAA9FA2003FF448 /* Images.xcassets */; };
 		99F52FF61AAA9FA2003FF448 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F52FF41AAA9FA2003FF448 /* LaunchScreen.xib */; };
 		99F530021AAA9FA2003FF448 /* TripHackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F530011AAA9FA2003FF448 /* TripHackTests.swift */; };
+		99F5300E1AAAA0B8003FF448 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F5300D1AAAA0B8003FF448 /* WebViewController.swift */; };
+		99F530111AAAA127003FF448 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F530101AAAA127003FF448 /* NavigationController.swift */; };
+		99F530131AAAA17E003FF448 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F530121AAAA17E003FF448 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +31,15 @@
 		99F52FE61AAA9FA2003FF448 /* TripHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99F52FEA1AAA9FA2003FF448 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99F52FEB1AAA9FA2003FF448 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		99F52FED1AAA9FA2003FF448 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		99F52FF01AAA9FA2003FF448 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99F52FF21AAA9FA2003FF448 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		99F52FF51AAA9FA2003FF448 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		99F52FFB1AAA9FA2003FF448 /* TripHackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripHackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99F530001AAA9FA2003FF448 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99F530011AAA9FA2003FF448 /* TripHackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHackTests.swift; sourceTree = "<group>"; };
+		99F5300D1AAAA0B8003FF448 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = ../WebViewController.swift; sourceTree = "<group>"; };
+		99F530101AAAA127003FF448 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		99F530121AAAA17E003FF448 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +81,10 @@
 		99F52FE81AAA9FA2003FF448 /* TripHack */ = {
 			isa = PBXGroup;
 			children = (
+				99F5300F1AAAA0D6003FF448 /* Photos */,
 				99F52FEB1AAA9FA2003FF448 /* AppDelegate.swift */,
-				99F52FED1AAA9FA2003FF448 /* ViewController.swift */,
+				99F530101AAAA127003FF448 /* NavigationController.swift */,
+				99F530121AAAA17E003FF448 /* TableViewController.swift */,
 				99F52FEF1AAA9FA2003FF448 /* Main.storyboard */,
 				99F52FF21AAA9FA2003FF448 /* Images.xcassets */,
 				99F52FF41AAA9FA2003FF448 /* LaunchScreen.xib */,
@@ -110,6 +116,14 @@
 				99F530001AAA9FA2003FF448 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		99F5300F1AAAA0D6003FF448 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				99F5300D1AAAA0B8003FF448 /* WebViewController.swift */,
+			);
+			name = Photos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,8 +226,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99F52FEE1AAA9FA2003FF448 /* ViewController.swift in Sources */,
 				99F52FEC1AAA9FA2003FF448 /* AppDelegate.swift in Sources */,
+				99F530111AAAA127003FF448 /* NavigationController.swift in Sources */,
+				99F5300E1AAAA0B8003FF448 /* WebViewController.swift in Sources */,
+				99F530131AAAA17E003FF448 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
