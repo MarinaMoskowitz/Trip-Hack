@@ -110,6 +110,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         detailsLabel.text = location + "\n\n" + description
         detailsLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
         detailsLabel.numberOfLines = 8;
+        detailsLabel.alpha = 0.8
         
         card2.addSubview(detailsLabel)
         updateContentViewWith(card2)
@@ -178,6 +179,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         flightButton.titleLabel?.textColor = UIColor.whiteColor()
         makeCard(flightButton)
         contentView.addSubview(flightButton)
+        flightButton.addTarget(self, action: "flyMeBackTouchUpInside", forControlEvents: UIControlEvents.TouchUpInside)
         
         wrongButton = UIButton(frame: CGRectMake(
             card5.frame.origin.x,
@@ -189,8 +191,11 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         wrongButton.titleLabel?.textColor = UIColor.whiteColor()
         makeCard(wrongButton)
         contentView.addSubview(wrongButton)
+        wrongButton.addTarget(self, action: "youreWrongTouchUpInside", forControlEvents: UIControlEvents.TouchUpInside)
         
         updateContentViewWith(wrongButton)
+        
+        
     }
     
     func updateContentViewWith(view:UIView) {
@@ -224,6 +229,22 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 
     func scrollViewDidScroll(scrollView: UIScrollView!) {
 
+    }
+    
+    // BUTTON FUNCTIONS
+    
+    @IBAction func flyBackTouchUpInside(sender: AnyObject) {
+    }
+    @IBAction func shareTouchUpInside(sender: AnyObject) {
+    }
+    @IBAction func addToBucketTouchUpInside(sender: AnyObject) {
+  
+    }
+    func flyMeBackTouchUpInside() {
+        
+    }
+    func youreWrongTouchUpInside() {
+    
     }
 
 }
