@@ -67,11 +67,15 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setTitle(text:NSString) {
-        titleLabel.text = text
+        let defaults = NSUserDefaults.standardUserDefaults()
+        titleLabel.text = defaults.stringForKey("title")
     }
     
     func setDetails(location: NSString, details:NSString) {
-        detailsLabel.text = location + "\n\n" + details
+        let defaults = NSUserDefaults.standardUserDefaults();
+        var location = defaults.stringForKey("location")
+        var details = defaults.stringForKey("details")
+        detailsLabel.text = location! + "\n\n" + details!
     }
     
     func setImages(array: Array<UIImage>) {

@@ -74,13 +74,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         var newLat = newLocation.coordinate.latitude
         var newLong = newLocation.coordinate.longitude
         if(sysLat != newLat || sysLong != newLong){
-            defaults.setObject(newLat, forKey: "latitutde")
-            defaults.setObject(newLong, forKey: "longitude")
+            defaults.setDouble(newLat, forKey: "latitutde")
+            defaults.setDouble(newLong, forKey: "longitude")
+            println("CHANGED (\(sysLat), \(sysLong)) -> (\(newLat),\(newLong))")
             PFCloud.callFunctionInBackground("getTripData", withParameters:["locationData": ["oldCoord": [sysLat, sysLong], "newCoord": [newLat,newLong]]], block: { (results:AnyObject!, error:NSError!) -> Void in
             if error != nil {
-                
             } else {
-               println("CLOUD COUDE \(results) \n") 
+                defaults.setObject(results["description"], forKey:"description")
+                defaults.setObject(results["title"], forKey:"title")
+                defaults.setObject(results["location"], forKey:"location")
             }
         })
         }
