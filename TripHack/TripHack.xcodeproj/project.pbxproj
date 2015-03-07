@@ -12,7 +12,6 @@
 		99F52FF31AAA9FA2003FF448 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F52FF21AAA9FA2003FF448 /* Images.xcassets */; };
 		99F52FF61AAA9FA2003FF448 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F52FF41AAA9FA2003FF448 /* LaunchScreen.xib */; };
 		99F530021AAA9FA2003FF448 /* TripHackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F530011AAA9FA2003FF448 /* TripHackTests.swift */; };
-<<<<<<< HEAD
 		E0B92AA31AAAA30A00A2C1FC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B92A9E1AAAA30A00A2C1FC /* Bolts.framework */; };
 		E0B92AA41AAAA30A00A2C1FC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B92A9F1AAAA30A00A2C1FC /* Parse.framework */; };
 		E0B92AA51AAAA30A00A2C1FC /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B92AA01AAAA30A00A2C1FC /* ParseCrashReporting.framework */; };
@@ -28,12 +27,6 @@
 		E0B92AB71AAAA39B00A2C1FC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B92AB61AAAA39B00A2C1FC /* SystemConfiguration.framework */; };
 		E0B92AB91AAAA3AB00A2C1FC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B92AB81AAAA3AB00A2C1FC /* libz.dylib */; };
 		E0B92ABB1AAAA3B500A2C1FC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B92ABA1AAAA3B500A2C1FC /* libsqlite3.dylib */; };
-=======
-		99F5300E1AAAA0B8003FF448 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F5300D1AAAA0B8003FF448 /* WebViewController.swift */; };
-		99F530111AAAA127003FF448 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F530101AAAA127003FF448 /* NavigationController.swift */; };
-		99F530131AAAA17E003FF448 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F530121AAAA17E003FF448 /* TableViewController.swift */; };
-		99F530171AAAA4C8003FF448 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F530161AAAA4C8003FF448 /* TableViewCell.swift */; };
->>>>>>> origin/master
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +49,6 @@
 		99F52FFB1AAA9FA2003FF448 /* TripHackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripHackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99F530001AAA9FA2003FF448 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99F530011AAA9FA2003FF448 /* TripHackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHackTests.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		E0B92A9E1AAAA30A00A2C1FC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		E0B92A9F1AAAA30A00A2C1FC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E0B92AA01AAAA30A00A2C1FC /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -73,12 +65,6 @@
 		E0B92AB81AAAA3AB00A2C1FC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E0B92ABA1AAAA3B500A2C1FC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		E0B92ABD1AAAA9BE00A2C1FC /* BridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BridgeHeader.h; path = ../BridgeHeader.h; sourceTree = "<group>"; };
-=======
-		99F5300D1AAAA0B8003FF448 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = ../WebViewController.swift; sourceTree = "<group>"; };
-		99F530101AAAA127003FF448 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		99F530121AAAA17E003FF448 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		99F530161AAAA4C8003FF448 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = ../TableViewCell.swift; sourceTree = "<group>"; };
->>>>>>> origin/master
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +161,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		E0B92ABC1AAAA3CD00A2C1FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,14 +181,6 @@
 				E0B92AA81AAAA36800A2C1FC /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
-=======
-		99F5300F1AAAA0D6003FF448 /* Photos */ = {
-			isa = PBXGroup;
-			children = (
-				99F5300D1AAAA0B8003FF448 /* WebViewController.swift */,
-			);
-			name = Photos;
->>>>>>> origin/master
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
