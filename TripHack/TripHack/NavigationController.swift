@@ -18,7 +18,9 @@ class NavigationController: UINavigationController {
     }
 
     func navigationBarSetup() {
-        self.navigationBar.translucent = true
+        self.navigationBar.backgroundColor = UIColor.blackColor()
+        self.navigationBar.alpha = 0.29
+
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
