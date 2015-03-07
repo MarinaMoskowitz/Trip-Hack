@@ -30,6 +30,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var card5 : UIView = UIView()
     var flightButton : UIButton = UIButton()
     var wrongButton : UIButton = UIButton()
+    var detailsLabel : UILabel = UILabel()
+    var imageArray : Array<UIImage>
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +47,31 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentSize = contentView.frame.size
     }
     
+    
+//ENTRYPOINTS
+    func setCoverPhoto(image: UIImage) {
+        coverPhoto.image = image
+    }
+    
+    func setProfilePhoto(image: UIImage) {
+        profilePicture.image = image
+    }
+    
+    func setTitle(text:NSString) {
+        titleLabel.text = text
+    }
+    
+    func setDetails(text:NSString) {
+        detailsLabel.text = text
+    }
+    
+    func setImages(array: Array<UIImage>) {
+        
+    }
+    
     func setupPlacement() {
         makeCard(card1)
+        scrollView.delegate = self
         
         coverPhoto.frame = CGRectMake(0, 0, self.view.frame.size.width, 200)
         profileBackground.frame = CGRectMake(X_BUFFER, coverPhoto.frame.size.height - 70, 100, 100)
@@ -62,20 +87,18 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         makePhotoCard(array)
         makeLamenessCard()
         makeFlightCards()
-        
-        scrollView.contentSize = contentView.frame.size
     }
     
     func makeReviewCard(location: String, description: String, rating: CGFloat, numRatings: Int) {
-        card2 = UIView(frame: CGRectMake(X_BUFFER, card1.frame.size.height + card1.frame.origin.y + Y_BUFFER, self.view.frame.size.width - (2 * X_BUFFER), 150));
+        card2 = UIView(frame: CGRectMake(X_BUFFER, card1.frame.size.height + card1.frame.origin.y + Y_BUFFER, self.view.frame.size.width - (2 * X_BUFFER), 200));
         card2.backgroundColor = UIColor.whiteColor()
         makeCard(card2)
         contentView.addSubview(card2)
         
-        var label: UILabel = UILabel(frame: CGRectMake(15, 10, card2.frame.size.width - (2 * 15), 100))
-        label.text = location + description
-        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        label.numberOfLines = 0;
+        detailsLabel: UILabel = UILabel(frame: CGRectMake(15, 10, card2.frame.size.width - (2 * 15), 170))
+        detailsLabel.text = location + "\n\n" + description
+        detailsLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        detailsLabel.numberOfLines = 8;
         
         card2.addSubview(label)
         updateContentViewWith(card2)
@@ -107,6 +130,18 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         makeCard(card4)
         card4.backgroundColor = UIColor.whiteColor()
         
+        var label = UILabel(frame: CGRectMake(X_BUFFER, Y_BUFFER, card4.frame.size.width - (2 * Y_BUFFER), 50))
+        label.text = "Compared to your friends, \nyour lameness score is:"
+        var lameness = UILabel(frame: CGRectMake(X_BUFFER, Y_BUFFER + label.frame.size.height + label.frame.origin.y, card4.frame.size.width - (2 * Y_BUFFER), 70))
+        lameness.text = String(Int(arc4random_uniform(100)))
+        lameness.textAlignment = NSTextAlignment.Center
+        lameness.font = UIFont (name: "Helvetica Neue", size: 75)
+        lameness.textColor = TRIP_COLOR
+        card4.addSubview(label)
+        card4.addSubview(lameness)
+        label.textAlignment = NSTextAlignment.Center
+        label.numberOfLines = 2
+
         updateContentViewWith(card4)
     }
     
@@ -176,6 +211,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         layer.shadowRadius = 2
     }
 
+    func scrollViewDidScroll(scrollView: UIScrollView!) {
+
+    }
 
     /*
     // MARK: - Navigation

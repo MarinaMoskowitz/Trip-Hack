@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             if error != nil {
 
             } else {
-                println(results)
+//                println(results)
             }
         })
 
