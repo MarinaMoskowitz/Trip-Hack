@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Parse
 
 var X_BUFFER: CGFloat { return 10.0 }
 var Y_BUFFER: CGFloat { return 10.0 }
@@ -51,6 +52,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         applyPlainShadow(profileBackground)
         setupPlacement()
         scrollView.contentSize = self.view.frame.size
+        
         // Do any additional setup after loading the view.
     }
     
@@ -63,6 +65,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
 //ENTRYPOINTS
     func setCoverPhoto(image: UIImage) {
+    //let url = NSURL(string: image.url)
+    //let data = NSData(contentsOfURL: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check
+    //imageURL.image = UIImage(data: data!)
         coverPhoto.image = image
     }
     
@@ -71,15 +76,11 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setTitle(text:NSString) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        titleLabel.text = defaults.stringForKey("title")
+        titleLabel.text = text
     }
     
     func setDetails(location: NSString, details:NSString) {
-        let defaults = NSUserDefaults.standardUserDefaults();
-        var location = defaults.stringForKey("location")
-        var details = defaults.stringForKey("details")
-        detailsLabel.text = location! + "\n\n" + details!
+        detailsLabel.text = location + "\n\n" + details
     }
     
     func setExtraImage(image: UIImage) {
@@ -109,8 +110,24 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         friendsLabel.frame = CGRectMake(profileBackground.frame.size.width + profileBackground.frame.origin.x + 10, coverPhoto.frame.size.height, self.view.frame.size.width - profileBackground.frame.size.width - profileBackground.frame.origin.x - 20, 24)
         
         card1.frame = CGRectMake(X_BUFFER, profileBackground.frame.size.height + profileBackground.frame.origin.y + 10, self.view.frame.size.width - 20, 110);
-        
-        makeReviewCard("Queenstown, New Zealand", description: "Shotover Canyon Swing is an intense, undie staining, adrenalin stimulating activity achieved by launching yourself from a 109m high cliff-mounted platform. You’ll reach speeds of 150kph as you freefall for 60m. The ropes then smoothly pendulum you into a 200m swing.", rating: 5, numRatings: 184)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let sysLat = defaults.doubleForKey("latitude")
+        let sysLong = defaults.doubleForKey("longitude")
+        self.makeReviewCard("Loading...", description:"...", rating: 5, numRatings: 184)
+            PFCloud.callFunctionInBackground("getTripData", withParameters:["locationData": ["oldCoord": [sysLat, sysLong], "newCoord": [sysLat,sysLong]]], block: { (results:AnyObject!, error:NSError!) -> Void in
+                if error != nil {
+                    
+                } else {
+                    println(results)
+                    defaults.setObject(results["description"], forKey:"description")
+                    defaults.setObject(results["title"], forKey:"title")
+                    defaults.setObject(results["location"], forKey:"location")
+                    println(defaults.stringForKey("title")!)
+                    self.setTitle(defaults.stringForKey("title")!)
+                    self.setDetails(defaults.stringForKey("location")!, details: defaults.stringForKey("description")!)
+                }
+            })
+
         
         var demo1 = UIImage(named: "demo1")
         var array = [demo1!]
