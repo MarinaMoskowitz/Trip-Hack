@@ -6,15 +6,19 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>F44910CC-3546-41E0-B441-CCB8B020F09D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TripHack</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A0C9BF73F674294B257406668186C78BA3B36619</key>
 		<string>https://github.com/MarinaMoskowitz/Trip-Hack.git</string>
 	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TripHack/TripHack.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A0C9BF73F674294B257406668186C78BA3B36619</key>
-		<string>Trip-Hack/</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/MarinaMoskowitz/Trip-Hack.git</string>
