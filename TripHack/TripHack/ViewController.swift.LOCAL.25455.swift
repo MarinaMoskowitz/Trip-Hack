@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreLocation
 
 var X_BUFFER: CGFloat { return 10.0 }
 var Y_BUFFER: CGFloat { return 10.0 }
