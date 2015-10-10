@@ -79,10 +79,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             println("CHANGED (\(sysLat), \(sysLong)) -> (\(newLat),\(newLong))")
             PFCloud.callFunctionInBackground("getTripData", withParameters:["locationData": ["oldCoord": [sysLat, sysLong], "newCoord": [newLat,newLong]]], block: { (results:AnyObject!, error:NSError!) -> Void in
             if error != nil {
+            
             } else {
+                println(results)
                 defaults.setObject(results["description"], forKey:"description")
                 defaults.setObject(results["title"], forKey:"title")
                 defaults.setObject(results["location"], forKey:"location")
+                println(defaults.stringForKey("title")!)
             }
         })
         }

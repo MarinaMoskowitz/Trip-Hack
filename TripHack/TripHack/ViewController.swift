@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Parse
 
 var X_BUFFER: CGFloat { return 10.0 }
 var Y_BUFFER: CGFloat { return 10.0 }
@@ -33,13 +34,16 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var detailsLabel : UILabel = UILabel()
     var imageArray : Array<UIImage> = []
     var flightLabel : UILabel = UILabel()
+    var extraPicture : UIImageView = UIImageView()
     
-    var flightURL : String = "http://www.google.com"
-    var activityURL : String = "http://www.tripadvisor.com"
+    var flightURL : String = "http://www.tripadvisor.com/CheapFlights?geo=255122&pax0=a&travelers=1&cos=0&nonstop=no&airport0=BOS&nearby0=no&airport1=ZQN&nearby1=no&date0=20150321&time0=0024&date1=20150328&time1=0024&provider0=Expedia&provider1=Travelocity&cr=0"
+    var activityURL : String = "http://www.tripadvisor.com/Attractions-g255122-Activities-Queenstown_Otago_Region_South_Island.html"
 
     var picturePVC : UIPageViewController = UIPageViewController()
     var height : CGFloat = 0.00
     var coverPhotoCenterY : CGFloat = 0.00
+
+    var darkImage : UIImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +51,23 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         applyPlainShadow(profileBackground)
         setupPlacement()
         scrollView.contentSize = self.view.frame.size
+        
         // Do any additional setup after loading the view.
+        showIntroAlert()
+    }
+    
+    func showIntroAlert() {
+        let alertController = UIAlertController(title: "Oh Hey, you're back from New Zealand!", message: "Here's something you totally forgot to do in New Zealand", preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "continue", style: .Cancel) { (action) in
+        println(action)
+        }
+        
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true) {
+        
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -59,6 +79,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
 //ENTRYPOINTS
     func setCoverPhoto(image: UIImage) {
+    //let url = NSURL(string: image.url)
+    //let data = NSData(contentsOfURL: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check
+    //imageURL.image = UIImage(data: data!)
         coverPhoto.image = image
     }
     
@@ -67,19 +90,15 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setTitle(text:NSString) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        titleLabel.text = defaults.stringForKey("title")
+        titleLabel.text = text
     }
     
     func setDetails(location: NSString, details:NSString) {
-        let defaults = NSUserDefaults.standardUserDefaults();
-        var location = defaults.stringForKey("location")
-        var details = defaults.stringForKey("details")
-        detailsLabel.text = location! + "\n\n" + details!
+        detailsLabel.text = location + "\n\n" + details
     }
     
-    func setImages(array: Array<UIImage>) {
-        
+    func setExtraImage(image: UIImage) {
+        extraPicture.image = image
     }
     
     func setFlightDate(dateString: NSString) {
@@ -105,8 +124,24 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         friendsLabel.frame = CGRectMake(profileBackground.frame.size.width + profileBackground.frame.origin.x + 10, coverPhoto.frame.size.height, self.view.frame.size.width - profileBackground.frame.size.width - profileBackground.frame.origin.x - 20, 24)
         
         card1.frame = CGRectMake(X_BUFFER, profileBackground.frame.size.height + profileBackground.frame.origin.y + 10, self.view.frame.size.width - 20, 110);
-        
-        makeReviewCard("Queenstown, New Zealand", description: "Shotover Canyon Swing is an intense, undie staining, adrenalin stimulating activity achieved by launching yourself from a 109m high cliff-mounted platform. You’ll reach speeds of 150kph as you freefall for 60m. The ropes then smoothly pendulum you into a 200m swing.", rating: 5, numRatings: 184)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let sysLat = defaults.doubleForKey("latitude")
+        let sysLong = defaults.doubleForKey("longitude")
+        self.makeReviewCard("Loading...", description:"...", rating: 5, numRatings: 184)
+            PFCloud.callFunctionInBackground("getTripData", withParameters:["locationData": ["oldCoord": [sysLat, sysLong], "newCoord": [sysLat,sysLong]]], block: { (results:AnyObject!, error:NSError!) -> Void in
+                if error != nil {
+                    
+                } else {
+                    println(results)
+                    defaults.setObject(results["description"], forKey:"description")
+                    defaults.setObject(results["title"], forKey:"title")
+                    defaults.setObject(results["location"], forKey:"location")
+                    println(defaults.stringForKey("title")!)
+                    self.setTitle(defaults.stringForKey("title")!)
+                    self.setDetails(defaults.stringForKey("location")!, details: defaults.stringForKey("description")!)
+                }
+            })
+
         
         var demo1 = UIImage(named: "demo1")
         var array = [demo1!]
@@ -141,18 +176,14 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         makeCard(card3)
         card3.backgroundColor = UIColor.whiteColor()
         
-        var pic1:UIImageView = UIImageView(image: images[0])
-        pic1.frame = CGRectMake(0, 0, card3.frame.size.width - (2 * X_BUFFER), card3.frame.size.height - (2 * Y_BUFFER))
-        pic1.center = CGPointMake(card3.frame.size.width/2, card3.frame.size.height/2)
-        pic1.contentMode = UIViewContentMode.ScaleAspectFit
+        extraPicture = UIImageView(image: images[0])
+        extraPicture.frame = CGRectMake(0, 0, card3.frame.size.width - (2 * X_BUFFER), card3.frame.size.height - (2 * Y_BUFFER))
+        extraPicture.center = CGPointMake(card3.frame.size.width/2, card3.frame.size.height/2)
+        extraPicture.contentMode = UIViewContentMode.ScaleAspectFit
         
-        card3.addSubview(pic1)
+        card3.addSubview(extraPicture)
         
         updateContentViewWith(card3)
-    }
-    
-    func setupPageViewController() {
-        picturePVC = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
     }
 
     func makeLamenessCard() {
@@ -222,7 +253,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func darkenCoverPhoto() {
-        var darkImage = UIImageView(image: UIImage(named:"fadeView"))
+        darkImage = UIImageView(image: UIImage(named:"fadeView"))
         darkImage.frame = coverPhoto.frame
         coverPhoto.addSubview(darkImage)
     }

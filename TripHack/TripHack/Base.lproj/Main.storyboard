@@ -85,7 +85,7 @@
                                                 <color key="backgroundColor" red="0.91730385638297873" green="0.91730385638297873" blue="0.91730385638297873" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xjI-Pp-Of3">
-                                                <rect key="frame" x="13" y="17" width="94" height="75"/>
+                                                <rect key="frame" x="13" y="19" width="94" height="75"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="flyBack">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -172,7 +172,7 @@
         <image name="bucketList" width="103" height="147"/>
         <image name="defaultBackground" width="1024" height="408"/>
         <image name="defaultProfile" width="145" height="145"/>
-        <image name="flyBack" width="133" height="150"/>
+        <image name="flyBack" width="133" height="130"/>
         <image name="share" width="176" height="138"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
